@@ -1,0 +1,150 @@
+﻿<Activity mc:Ignorable="sap sap2010 sads" x:Class="BMIRuleEngine.Workflow1"
+ xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
+ xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+ xmlns:mca="clr-namespace:Microsoft.CSharp.Activities;assembly=System.Activities"
+ xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
+ xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
+ xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
+ xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
+ xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="BMIInput" Type="InArgument(x:Double)" />
+    <x:Property Name="Recomendetion" Type="OutArgument(x:String)" />
+  </x:Members>
+  <sap2010:ExpressionActivityEditor.ExpressionActivityEditor>C#</sap2010:ExpressionActivityEditor.ExpressionActivityEditor>
+  <sap2010:WorkflowViewState.IdRef>BMIRuleEngine.Workflow1_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Text</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.CSharp</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>BMIRuleEngine</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <If sap2010:Annotation.AnnotationText="" sap2010:WorkflowViewState.IdRef="If_3">
+    <If.Condition>
+      <InArgument x:TypeArguments="x:Boolean">
+        <mca:CSharpValue x:TypeArguments="x:Boolean">BMIInput &lt; 18.5</mca:CSharpValue>
+      </InArgument>
+    </If.Condition>
+    <If.Then>
+      <Assign sap2010:WorkflowViewState.IdRef="Assign_1">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:String">
+            <mca:CSharpReference x:TypeArguments="x:String">Recomendetion</mca:CSharpReference>
+          </OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:String">Your BMI is less than 18.5</InArgument>
+        </Assign.Value>
+      </Assign>
+    </If.Then>
+    <If.Else>
+      <If sap2010:WorkflowViewState.IdRef="If_2">
+        <If.Condition>
+          <InArgument x:TypeArguments="x:Boolean">
+            <mca:CSharpValue x:TypeArguments="x:Boolean">BMIInput &gt;= 18.5 &amp;&amp; BMIInput &lt;= 24.9</mca:CSharpValue>
+          </InArgument>
+        </If.Condition>
+        <If.Then>
+          <Assign>
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">
+                <mca:CSharpReference x:TypeArguments="x:String">Recomendetion</mca:CSharpReference>
+              </OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">Your BMI is between 18.5 to 24.9</InArgument>
+            </Assign.Value>
+            <sap2010:WorkflowViewState.IdRef>Assign_2</sap2010:WorkflowViewState.IdRef>
+          </Assign>
+        </If.Then>
+        <If.Else>
+          <If>
+            <If.Condition>
+              <InArgument x:TypeArguments="x:Boolean">
+                <mca:CSharpValue x:TypeArguments="x:Boolean">BMIInput &gt;=25 &amp;&amp; BMIInput &lt;29.9</mca:CSharpValue>
+              </InArgument>
+            </If.Condition>
+            <If.Then>
+              <Assign>
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:String">
+                    <mca:CSharpReference x:TypeArguments="x:String">Recomendetion</mca:CSharpReference>
+                  </OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:String">Your BMI is beetween 25 to 29.9</InArgument>
+                </Assign.Value>
+                <sap2010:WorkflowViewState.IdRef>Assign_3</sap2010:WorkflowViewState.IdRef>
+              </Assign>
+            </If.Then>
+            <If.Else>
+              <If>
+                <If.Condition>
+                  <InArgument x:TypeArguments="x:Boolean">
+                    <mca:CSharpValue x:TypeArguments="x:Boolean">BMIInput&gt;30</mca:CSharpValue>
+                  </InArgument>
+                </If.Condition>
+                <If.Then>
+                  <Assign>
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:String">
+                        <mca:CSharpReference x:TypeArguments="x:String">Recomendetion</mca:CSharpReference>
+                      </OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:String" xml:space="preserve">Your BMI is above 30 </InArgument>
+                    </Assign.Value>
+                    <sap2010:WorkflowViewState.IdRef>Assign_4</sap2010:WorkflowViewState.IdRef>
+                  </Assign>
+                </If.Then>
+                <sap2010:WorkflowViewState.IdRef>If_4</sap2010:WorkflowViewState.IdRef>
+              </If>
+            </If.Else>
+            <sap2010:WorkflowViewState.IdRef>If_5</sap2010:WorkflowViewState.IdRef>
+          </If>
+        </If.Else>
+      </If>
+    </If.Else>
+    <sads:DebugSymbol.Symbol>d0BDOlxVc2Vyc1xNaXRcc291cmNlXHJlcG9zXFdGX1dlYkFwcFxCTUlSdWxlRW5naW5lXFdvcmtmbG93MS54YW1sEysDggEIAgEBLgkuWgIBAjIHOxACASA+B38MAgEFOTI5TAIBJDUNNWACASFBDUF+AgEGRQtPFAIBG1ILfRACAQlMNkxWAgEfSBFIZAIBHFURVX0CAQpZD2MYAgEWZg96FAIBDWA6YFkCARpcFVxoAgEXaRVpYgIBDm0TdxwCARFwGXBsAgES</sads:DebugSymbol.Symbol>
+  </If>
+  <sap2010:WorkflowViewState.ViewStateManager>
+    <sap2010:ViewStateManager>
+      <sap2010:ViewStateData Id="Assign_1" sap:VirtualizedContainerService.HintSize="242,62" />
+      <sap2010:ViewStateData Id="Assign_2" sap:VirtualizedContainerService.HintSize="242,62" />
+      <sap2010:ViewStateData Id="Assign_3" sap:VirtualizedContainerService.HintSize="242,62" />
+      <sap2010:ViewStateData Id="Assign_4" sap:VirtualizedContainerService.HintSize="242,62" />
+      <sap2010:ViewStateData Id="If_4" sap:VirtualizedContainerService.HintSize="464,212" />
+      <sap2010:ViewStateData Id="If_5" sap:VirtualizedContainerService.HintSize="731,362" />
+      <sap2010:ViewStateData Id="If_2" sap:VirtualizedContainerService.HintSize="998,512" />
+      <sap2010:ViewStateData Id="If_3" sap:VirtualizedContainerService.HintSize="1265,685">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="BMIRuleEngine.Workflow1_1" sap:VirtualizedContainerService.HintSize="629,440" />
+    </sap2010:ViewStateManager>
+  </sap2010:WorkflowViewState.ViewStateManager>
+</Activity>

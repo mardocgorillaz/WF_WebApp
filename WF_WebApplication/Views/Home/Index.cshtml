@@ -1,0 +1,41 @@
+﻿@model WF_WebApplication.Models.BMI
+
+@{
+    ViewBag.Title = "Home Page";
+}
+<div class="row">
+    <div class="col-md-12">
+        <h1 style="text-align:center">
+            Weight Status
+        </h1>
+    </div>
+</div>
+<div>
+    @using (@Html.BeginForm("FindBMI", "Home"))
+    {
+        <div class="row">
+            <div class="col-md-4"> </div>
+            <div class="col-md-2">
+                @Html.LabelFor(model => model.Height);
+            </div>
+            <div class="col-md-6">
+                @Html.TextBoxFor(model => model.Height, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4"> </div>
+            <div class="col-md-2">
+                @Html.LabelFor(model => model.Weight);
+            </div>
+            <div class="col-md-6">
+                @Html.TextBoxFor(model => model.Weight, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6"> </div>
+            <div class="col-md-6">
+                <input type="submit" name="Submit" value="Submit" />
+            </div>
+        </div>
+    }
+</div>  

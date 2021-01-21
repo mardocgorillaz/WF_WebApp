@@ -1,0 +1,36 @@
+﻿
+@model WF_WebApplication.Models.BMI
+@{
+    ViewBag.Title = "BMI Report";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <h1 style="text-align:center">BMI Report</h1>
+    </div>
+</div>
+<hr />
+<div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-2"> @Html.LabelFor(model => model.Height); </div>
+    <div class="col-md-6"> @Html.TextBoxFor(model => model.Height, new { @class = "form-control" }) </div>
+</div>
+<div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-2"> @Html.LabelFor(model => model.Weight); </div>
+    <div class="col-md-6"> @Html.TextBoxFor(model => model.Weight, new { @class = "form-control" }) </div>
+</div>
+<div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-2"> @Html.LabelFor(model => model.BMIValue); </div>
+    <div class="col-md-6"> @Html.TextBoxFor(model => model.BMIValue, new { @class = "form-control" }) </div>
+</div>
+<div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-2"> @Html.LabelFor(model => model.Recommendation); </div>
+    <div class="col-md-6"> @Html.TextAreaFor(model => model.Recommendation, new { @class = "form-control" }) </div>
+</div>
+<div class="row">
+    <div class="col-md-6"></div>
+    <div class="col-md-6"> @Html.ActionLink("Back", "Index") </div>
+</div>
